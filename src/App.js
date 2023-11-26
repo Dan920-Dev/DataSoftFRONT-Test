@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import NavigationBar from './components/NavigationBar';
+import BookList from './components/BookList'; 
+
 
 function App() {
+
+  const [endpoint, setEndpoint] = useState('book/all'); // Estado inicial del endpoint.
+
+  const handleSelectEndpoint = (newEndpoint) => {
+    console.log('Updating endpoint to: ', newEndpoint);
+    setEndpoint(newEndpoint);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <NavigationBar onSelectEndpoint={handleSelectEndpoint} />
+    <BookList endpoint={endpoint} />
+    </>
+    
   );
 }
 
