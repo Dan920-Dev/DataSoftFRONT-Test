@@ -10,7 +10,8 @@ const CardComponent = ({ book }) => {
         <div className="card-body">
           <h5 className="card-title">{book.name}</h5>
           <p className="card-text">${book.price}</p>
-          {book.state && <span className="badge bg-success">En Stock</span>}
+          {book.state && <span className={`badge ${book.state === 'DIS' ? 'bg-success' : 'bg-danger'}`}>
+  {book.state === 'DIS' ? 'Disponible' : 'Ocupado'}</span>}
           <div className="mt-2">
             <button onClick={() => setModalShow(true)} className="btn btn-primary">
               Ver detalles
